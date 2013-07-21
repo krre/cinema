@@ -4,8 +4,8 @@ import QtQuick.Controls.Styles 1.0
 
 Item {
     id: startScreen
-    width: 800
-    height: 480
+    anchors.fill: parent
+    anchors.centerIn: parent
     Item {
         id: container
         width: 500
