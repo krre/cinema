@@ -1,15 +1,15 @@
-#include <QGuiApplication>
-#include <QQuickView>
+#include <QtGui/QGuiApplication>
+#include "qtquick2applicationviewer.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    QQuickView view;
-    view.setTitle("The Game");
-    view.setSource(QUrl::fromLocalFile("qml/main.qml"));
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-    QObject::connect((QObject*)view.engine(), SIGNAL(quit()), &app, SLOT(quit()));
-    view.show();
+
+    QtQuick2ApplicationViewer viewer;
+    viewer.setTitle("The Game");
+    viewer.setMainQmlFile(QStringLiteral("qml/main.qml"));
+    QObject::connect((QObject*)viewer.engine(), SIGNAL(quit()), &app, SLOT(quit()));
+    viewer.showExpanded();
+
     return app.exec();
 }
-

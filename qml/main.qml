@@ -50,7 +50,7 @@ Rectangle {
         }
         label: Text {
             text: control.text
-            font.pixelSize: 22
+            font.pixelSize: 35
             color: "steelblue"
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
