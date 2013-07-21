@@ -18,12 +18,12 @@ Item {
             Button {
                 text: qsTr("ИГРА")
                 style: buttonStyle
-                onClicked: console.log("click")
+                onClicked: main.screenMode = "game"
             }
             Button {
                 text: qsTr("ПРОДЮСЕР")
                 style: buttonStyle
-                onClicked: console.log("click")
+                onClicked: main.screenMode = "producer"
             }
             Button {
                 text: qsTr("АРХИВ")

@@ -68,7 +68,7 @@ Item {
                 anchors.right: parent.right
                 text: qsTr("Далее")
                 style: buttonStyle
-                onClicked: console.log("click")
+                onClicked: main.screenMode = "game"
             }
         }
     }

@@ -1,12 +1,16 @@
 import QtQuick 2.1
-
 Item {
+    id: main
+    property string screenMode: "start"
     width: 800
     height: 480
     StartScreen {
-        visible: false
+        visible: screenMode === "start"
     }
     ProducerScreen {
-        //visible: false
+        visible: screenMode === "producer"
+    }
+    GameScreen {
+        visible: screenMode === "game"
     }
 }
