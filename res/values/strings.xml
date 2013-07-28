@@ -2,7 +2,8 @@
 <resources>
 
     <string name="app_name">The Game</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="game_button">ИГРА</string>
+    <string name="producer_button">ПРОДЮСЕР</string>
+    <string name="archive_button">АРХИВ</string>
 
 </resources>
