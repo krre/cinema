@@ -11,5 +11,6 @@
     <string name="avatar_button">Аватар</string>
     <string name="next_button">Далее</string>
     <string name="statistics_textView">СТАТИСТИКА</string>
+    <string name="back_button">Вернуться в начало</string>
 
 </resources>
