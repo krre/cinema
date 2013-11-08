@@ -2,65 +2,111 @@ package com.g2b.cinema;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.Texture.TextureFilter;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.VertexAttribute;
+import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 
 public class Cinema implements ApplicationListener {
-	private OrthographicCamera camera;
-	private SpriteBatch batch;
-	private Texture texture;
-	private Sprite sprite;
-	
-	@Override
-	public void create() {		
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
-		
-		camera = new OrthographicCamera(1, h/w);
-		batch = new SpriteBatch();
-		
-		texture = new Texture(Gdx.files.internal("data/libgdx.png"));
-		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-		
-		TextureRegion region = new TextureRegion(texture, 0, 0, 512, 275);
-		
-		sprite = new Sprite(region);
-		sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
-		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
-		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
-	}
+    private static final int VIRTUAL_WIDTH = 480;
+    private static final int VIRTUAL_HEIGHT = 800;
+    private static final float ASPECT_RATIO = (float) VIRTUAL_WIDTH / (float) VIRTUAL_HEIGHT;
+    private Camera camera;
+    private Rectangle viewport;
+    private SpriteBatch sb;
+    private Mesh screenQuad;
+    private Mesh quad;
 
-	@Override
-	public void dispose() {
-		batch.dispose();
-		texture.dispose();
-	}
+    @Override
+    public void create() {
+        sb = new SpriteBatch();
+        camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
 
-	@Override
-	public void render() {		
-		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		
-		batch.setProjectionMatrix(camera.combined);
-		batch.begin();
-		sprite.draw(batch);
-		batch.end();
-	}
+        screenQuad = new Mesh(true, 4, 4,
+                new VertexAttribute(Usage.Position, 3, "attr_position"),
+                new VertexAttribute(Usage.ColorPacked, 4, "attr_color"));
 
-	@Override
-	public void resize(int width, int height) {
-	}
+        float[] vertX = new float[]{-(float) VIRTUAL_WIDTH / 2f, (float) VIRTUAL_WIDTH / 2f};
+        float[] vertY = new float[]{-(float) VIRTUAL_HEIGHT / 2f, (float) VIRTUAL_HEIGHT / 2f};
+        screenQuad.setVertices(new float[]{
+                vertX[0], vertY[0], 0f, Color.toFloatBits(0, 128, 0, 255),
+                vertX[1], vertY[0], 0f, Color.toFloatBits(0, 192, 0, 255),
+                vertX[0], vertY[1], 0f, Color.toFloatBits(0, 192, 0, 255),
+                vertX[1], vertY[1], 0f, Color.toFloatBits(0, 255, 0, 255)
+        });
+        screenQuad.setIndices(new short[]{0, 1, 2, 3});
 
-	@Override
-	public void pause() {
-	}
+        quad = new Mesh(true, 4, 4,
+                new VertexAttribute(Usage.Position, 3, "attr_position"),
+                new VertexAttribute(Usage.ColorPacked, 4, "attr_color"));
+        vertX = new float[]{-40f, 40f};
+        vertY = new float[]{-40f, 40f};
+        quad.setVertices(new float[]{
+                vertX[0], vertY[0], 0f, Color.toFloatBits(255, 0, 0, 255),
+                vertX[1], vertY[0], 0f, Color.toFloatBits(192, 0, 0, 255),
+                vertX[0], vertY[1], 0f, Color.toFloatBits(192, 0, 0, 255),
+                vertX[1], vertY[1], 0f, Color.toFloatBits(128, 0, 0, 255)
+        });
+        quad.setIndices(new short[]{0, 1, 2, 3});
 
-	@Override
-	public void resume() {
-	}
+    }
+
+    @Override
+    public void render() {
+        // update camera
+        camera.update();
+        camera.apply(Gdx.gl10);
+
+        // set viewport
+        Gdx.gl.glViewport((int) viewport.x, (int) viewport.y,
+                (int) viewport.width, (int) viewport.height);
+
+        // clear previous frame
+        Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+
+        screenQuad.render(GL10.GL_TRIANGLE_STRIP, 0, 4);
+        quad.render(GL10.GL_TRIANGLE_STRIP, 0, 4);
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        // calculate new viewport
+        float aspectRatio = (float) width / (float) height;
+        float scale = 1f;
+        Vector2 crop = new Vector2(0f, 0f);
+
+        if (aspectRatio > ASPECT_RATIO) {
+            scale = (float) height / (float) VIRTUAL_HEIGHT;
+            crop.x = (width - VIRTUAL_WIDTH * scale) / 2f;
+        } else if (aspectRatio < ASPECT_RATIO) {
+            scale = (float) width / (float) VIRTUAL_WIDTH;
+            crop.y = (height - VIRTUAL_HEIGHT * scale) / 2f;
+        } else {
+            scale = (float) width / (float) VIRTUAL_WIDTH;
+        }
+
+        float w = (float) VIRTUAL_WIDTH * scale;
+        float h = (float) VIRTUAL_HEIGHT * scale;
+        viewport = new Rectangle(crop.x, crop.y, w, h);
+    }
+
+    @Override
+    public void resume() {
+    }
+
+    @Override
+    public void dispose() {
+    }
+
+    @Override
+    public void pause() {
+    }
+
+
 }

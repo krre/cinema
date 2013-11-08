@@ -9,7 +9,7 @@ public class Main {
 		cfg.title = "Cinema";
 		cfg.useGL20 = false;
 		cfg.width = 480;
-		cfg.height = 320;
+		cfg.height = 800;
 		
 		new LwjglApplication(new Cinema(), cfg);
 	}
