@@ -4,7 +4,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.VertexAttribute;
@@ -68,10 +68,10 @@ public class Cinema implements ApplicationListener {
                 (int) viewport.width, (int) viewport.height);
 
         // clear previous frame
-        Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        screenQuad.render(GL10.GL_TRIANGLE_STRIP, 0, 4);
-        quad.render(GL10.GL_TRIANGLE_STRIP, 0, 4);
+        screenQuad.render(GL20.GL_TRIANGLE_STRIP, 0, 4);
+        quad.render(GL20.GL_TRIANGLE_STRIP, 0, 4);
     }
 
     @Override
