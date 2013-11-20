@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class Cinema implements ApplicationListener {
     private static final int VIRTUAL_WIDTH = 480;
@@ -22,11 +24,13 @@ public class Cinema implements ApplicationListener {
     private SpriteBatch sb;
     private Mesh screenQuad;
     private Mesh quad;
+    private ShapeRenderer shapeRenderer;
 
     @Override
     public void create() {
         sb = new SpriteBatch();
         camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+        shapeRenderer = new ShapeRenderer();
 
         screenQuad = new Mesh(true, 4, 4,
                 new VertexAttribute(Usage.Position, 3, "attr_position"),
@@ -62,6 +66,7 @@ public class Cinema implements ApplicationListener {
         // update camera
         camera.update();
         camera.apply(Gdx.gl10);
+        shapeRenderer.setProjectionMatrix(camera.combined);
 
         // set viewport
         Gdx.gl.glViewport((int) viewport.x, (int) viewport.y,
@@ -72,10 +77,25 @@ public class Cinema implements ApplicationListener {
 
         screenQuad.render(GL20.GL_TRIANGLE_STRIP, 0, 4);
         quad.render(GL20.GL_TRIANGLE_STRIP, 0, 4);
+
+        shapeRenderer.begin(ShapeType.Line);
+        shapeRenderer.setColor(1, 1, 0, 1);
+        shapeRenderer.line(0, 0, 100, 100);
+        shapeRenderer.rect(50, 50, 100, 100);
+        shapeRenderer.circle(0, 0, VIRTUAL_WIDTH / 2);
+        shapeRenderer.end();
+
+        shapeRenderer.begin(ShapeType.Filled);
+        shapeRenderer.setColor(0, 1, 0, 1);
+        shapeRenderer.rect(70, 70, 80, 80);
+        shapeRenderer.circle(90, 90, 50);
+        shapeRenderer.end();
+
     }
 
     @Override
     public void resize(int width, int height) {
+        Gdx.app.log("Cinema", "height " + height);
         // calculate new viewport
         float aspectRatio = (float) width / (float) height;
         float scale = 1f;
