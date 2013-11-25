@@ -7,9 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="LibGDX desktop" level="project" />
     <orderEntry type="module" module-name="cinema" exported="" />
-    <orderEntry type="library" name="gdx-tools" level="project" />
+    <orderEntry type="library" exported="" name="LibGDX-desktop" level="project" />
+    <orderEntry type="library" exported="" name="gdx-tools" level="project" />
   </component>
 </module>
 
