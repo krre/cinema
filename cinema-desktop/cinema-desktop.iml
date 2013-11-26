@@ -9,7 +9,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="cinema" />
     <orderEntry type="library" name="gdx-tools" level="project" />
-    <orderEntry type="library" name="LibGDX desktop" level="project" />
+    <orderEntry type="library" name="LibGDX-desktop" level="project" />
   </component>
 </module>
 
