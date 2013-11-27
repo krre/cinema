@@ -2,10 +2,15 @@ package com.g2b.cinema;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 
 public class PhaseScreen implements Screen, GestureDetector.GestureListener {
     private Stage stage;
@@ -14,8 +19,71 @@ public class PhaseScreen implements Screen, GestureDetector.GestureListener {
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
         stage.addActor(new Board());
-        stage.addActor(new Dice());
-        stage.addActor(new Card());
+
+
+        //stage.addActor(new Dice());
+        //stage.addActor(new Card());
+
+        Image sourceImage = new Image(Assets.card);
+        sourceImage.setBounds(50, 325, 100, 100);
+        stage.addActor(sourceImage);
+
+        Image validTargetImage = new Image(Assets.card);
+        validTargetImage.setBounds(200, 250, 100, 100);
+        stage.addActor(validTargetImage);
+
+        Image invalidTargetImage = new Image(Assets.card);
+        invalidTargetImage.setBounds(200, 400, 100, 100);
+        stage.addActor(invalidTargetImage);
+
+        DragAndDrop dragAndDrop = new DragAndDrop();
+        dragAndDrop.addSource(new DragAndDrop.Source(sourceImage) {
+            public DragAndDrop.Payload dragStart (InputEvent event, float x, float y, int pointer) {
+                DragAndDrop.Payload payload = new DragAndDrop.Payload();
+                payload.setObject("Some payload!");
+
+
+                payload.setDragActor(new Image(Assets.card));
+
+                Image validImage = new Image(Assets.card);
+                validImage.setColor(0, 1, 0, 1);
+                payload.setValidDragActor(validImage);
+
+                Image invalidImage = new Image(Assets.card);
+                invalidImage.setColor(1, 0, 0, 1);
+                payload.setInvalidDragActor(invalidImage);
+
+
+                return payload;
+            }
+        });
+        dragAndDrop.addTarget(new DragAndDrop.Target(validTargetImage) {
+            public boolean drag (DragAndDrop.Source source, DragAndDrop.Payload payload, float x, float y, int pointer) {
+                getActor().setColor(Color.GREEN);
+                return true;
+            }
+
+            public void reset (DragAndDrop.Source source, DragAndDrop.Payload payload) {
+                getActor().setColor(Color.WHITE);
+            }
+
+            public void drop (DragAndDrop.Source source, DragAndDrop.Payload payload, float x, float y, int pointer) {
+                System.out.println("Accepted: " + payload.getObject() + " " + x + ", " + y);
+            }
+        });
+        dragAndDrop.addTarget(new DragAndDrop.Target(invalidTargetImage) {
+            public boolean drag (DragAndDrop.Source source, DragAndDrop.Payload payload, float x, float y, int pointer) {
+                getActor().setColor(Color.RED);
+                return false;
+            }
+
+            public void reset (DragAndDrop.Source source, DragAndDrop.Payload payload) {
+                getActor().setColor(Color.WHITE);
+            }
+
+            public void drop (DragAndDrop.Source source, DragAndDrop.Payload payload, float x, float y, int pointer) {
+            }
+        });
     }
 
     @Override
@@ -29,6 +97,7 @@ public class PhaseScreen implements Screen, GestureDetector.GestureListener {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
+        Table.drawDebug(stage);
     }
 
     @Override
