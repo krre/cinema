@@ -7,6 +7,12 @@ import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.g2b.cinema.actors.ActionButton;
+import com.g2b.cinema.actors.Board;
+import com.g2b.cinema.actors.Card;
+import com.g2b.cinema.actors.Deck;
+import com.g2b.cinema.actors.OpponentAvatar;
+import com.g2b.cinema.actors.UserAvatar;
 
 public class PhaseScreen implements Screen, GestureDetector.GestureListener {
     private Stage stage;

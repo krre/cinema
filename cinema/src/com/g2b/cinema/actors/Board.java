@@ -1,31 +1,25 @@
-package com.g2b.cinema;
+package com.g2b.cinema.actors;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.g2b.cinema.Cinema;
 
-public class OpponentAvatar extends Actor {
+public class Board extends Actor {
     private ShapeRenderer shapeRenderer;
 
-    public OpponentAvatar(float x, float y) {
+    public Board() {
         shapeRenderer = new ShapeRenderer();
-
-        setPosition(x ,y);
-        setSize(140, 143);
     }
 
-    @Override
     public void draw(SpriteBatch batch, float parentAlpha) {
         batch.end();
 
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(Color.LIGHT_GRAY);
-        shapeRenderer.rect(getX() , getY(), getWidth(), getHeight());
+        shapeRenderer.setColor(Color.WHITE);
+        shapeRenderer.rect(0, 0, Cinema.WIDTH, Cinema.HEIGHT);
         shapeRenderer.end();
 
         batch.begin();

@@ -1,4 +1,4 @@
-package com.g2b.cinema;
+package com.g2b.cinema.actors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
