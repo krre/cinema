@@ -5,14 +5,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class UserAvatar extends Actor {
+public class Description extends Actor {
     private ShapeRenderer shapeRenderer;
 
-    public UserAvatar(float x, float y) {
+    public Description() {
         shapeRenderer = new ShapeRenderer();
 
-        setPosition(x, y);
-        setSize(227, 251);
+        setPosition(0, 450);
+        setSize(533, 222);
     }
 
     @Override
