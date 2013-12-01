@@ -1,17 +1,19 @@
 package com.g2b.cinema.actors;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.g2b.cinema.Cinema;
 
-public class Description extends Actor {
+public class GamerHand extends Actor {
     private ShapeRenderer shapeRenderer;
 
-    public Description() {
+    public GamerHand() {
         shapeRenderer = new ShapeRenderer();
 
-        setPosition(0, 450);
-        setSize(533, 222);
+        setPosition(0, 0);
+        setSize(Cinema.WIDTH, 450);
     }
 
     @Override
@@ -20,7 +22,7 @@ public class Description extends Actor {
 
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(0.89f, 0.87f, 1f, 1f);
+        shapeRenderer.setColor(0.46f, 0.45f, 0.6f, 1);
         shapeRenderer.rect(getX(), getY(), getWidth(), getHeight());
         shapeRenderer.end();
 

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.g2b.cinema.actors.ActionButton;
@@ -12,15 +13,19 @@ import com.g2b.cinema.actors.Board;
 import com.g2b.cinema.actors.Card;
 import com.g2b.cinema.actors.Deck;
 import com.g2b.cinema.actors.Description;
+import com.g2b.cinema.actors.GamerHand;
 import com.g2b.cinema.actors.OpponentAvatar;
+import com.g2b.cinema.actors.Slot;
 import com.g2b.cinema.actors.UserAvatar;
 
 public class PhaseScreen implements Screen, GestureDetector.GestureListener {
     private Stage stage;
+    private GamerHand gamerHand;
 
     public PhaseScreen() {
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
+
         stage.addActor(new Board());
 
         stage.addActor(new OpponentAvatar(11, 1128));
@@ -43,6 +48,22 @@ public class PhaseScreen implements Screen, GestureDetector.GestureListener {
         stage.addActor(new Card(439, 686));
 
         stage.addActor(new Description());
+
+        gamerHand = new GamerHand();
+        stage.addActor(gamerHand);
+
+        stage.addActor(new Slot(5, 214));
+        stage.addActor(new Slot(126, 214));
+        stage.addActor(new Slot(245, 214));
+        stage.addActor(new Slot(366, 214));
+        stage.addActor(new Slot(485, 214));
+
+        stage.addActor(new Slot(5, 6));
+        stage.addActor(new Slot(126, 6));
+        stage.addActor(new Slot(245, 6));
+        stage.addActor(new Slot(366, 6));
+        stage.addActor(new Slot(485, 6));
+
 
     }
 
