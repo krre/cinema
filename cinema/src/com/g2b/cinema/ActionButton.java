@@ -8,14 +8,14 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 
-public class Dice extends Actor {
+public class ActionButton extends Actor {
     private ShapeRenderer shapeRenderer;
 
-    public Dice(float x, float y, float width, float height) {
+    public ActionButton(float x, float y) {
         shapeRenderer = new ShapeRenderer();
 
         setPosition(x, y);
-        setSize(width, height);
+        setSize(147, 147);
         setBounds(getX(), getY(), getWidth(), getHeight());
 
         addListener(new InputListener() {

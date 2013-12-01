@@ -2,15 +2,11 @@ package com.g2b.cinema;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 
 public class PhaseScreen implements Screen, GestureDetector.GestureListener {
     private Stage stage;
@@ -19,7 +15,10 @@ public class PhaseScreen implements Screen, GestureDetector.GestureListener {
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
         stage.addActor(new Board());
-        stage.addActor(new Dice(565, 489, 147, 147));
+
+        stage.addActor(new ActionButton(565, 853));
+        stage.addActor(new ActionButton(565, 674));
+        stage.addActor(new ActionButton(565, 489));
 
         stage.addActor(new Deck(9, 683));
 
