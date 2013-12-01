@@ -1,18 +1,21 @@
 package com.g2b.cinema;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 
-public class Deck extends Actor {
+public class UserAvatar extends Actor {
     private ShapeRenderer shapeRenderer;
 
-    public Deck(float x, float y) {
+    public UserAvatar(float x, float y) {
         shapeRenderer = new ShapeRenderer();
 
-        setPosition(x, y);
-        setSize(197, 336);
+        setPosition(x ,y);
+        setSize(227, 251);
     }
 
     @Override
@@ -22,7 +25,7 @@ public class Deck extends Actor {
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.LIGHT_GRAY);
-        shapeRenderer.rect(getX(), getY(), getWidth(), getHeight());
+        shapeRenderer.rect(getX() , getY(), getWidth(), getHeight());
         shapeRenderer.end();
 
         batch.begin();

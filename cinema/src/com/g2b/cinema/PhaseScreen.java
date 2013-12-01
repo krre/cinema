@@ -16,6 +16,11 @@ public class PhaseScreen implements Screen, GestureDetector.GestureListener {
         Gdx.input.setInputProcessor(stage);
         stage.addActor(new Board());
 
+        stage.addActor(new OpponentAvatar(11, 1128));
+        stage.addActor(new OpponentAvatar(165, 1128));
+        stage.addActor(new OpponentAvatar(327, 1128));
+        stage.addActor(new UserAvatar(484, 1018));
+
         stage.addActor(new ActionButton(565, 853));
         stage.addActor(new ActionButton(565, 674));
         stage.addActor(new ActionButton(565, 489));
