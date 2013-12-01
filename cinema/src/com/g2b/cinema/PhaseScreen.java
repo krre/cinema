@@ -13,9 +13,11 @@ import com.g2b.cinema.actors.Board;
 import com.g2b.cinema.actors.Card;
 import com.g2b.cinema.actors.Deck;
 import com.g2b.cinema.actors.Description;
+import com.g2b.cinema.actors.Fortune;
 import com.g2b.cinema.actors.GamerHand;
 import com.g2b.cinema.actors.OpponentAvatar;
 import com.g2b.cinema.actors.Slot;
+import com.g2b.cinema.actors.Tool;
 import com.g2b.cinema.actors.UserAvatar;
 
 public class PhaseScreen implements Screen, GestureDetector.GestureListener {
@@ -63,6 +65,10 @@ public class PhaseScreen implements Screen, GestureDetector.GestureListener {
         stage.addActor(new Slot(245, 6));
         stage.addActor(new Slot(366, 6));
         stage.addActor(new Slot(485, 6));
+
+        stage.addActor(new Tool(615, 327));
+        stage.addActor(new Tool(615, 208));
+        stage.addActor(new Fortune(615, 6));
 
 
     }
