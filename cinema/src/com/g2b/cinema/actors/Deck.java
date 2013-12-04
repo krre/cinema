@@ -1,15 +1,23 @@
 package com.g2b.cinema.actors;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Deck extends Actor {
     private ShapeRenderer shapeRenderer;
+    private BitmapFont bitmapFont;
 
     public Deck(float x, float y) {
         shapeRenderer = new ShapeRenderer();
+
+        bitmapFont = new BitmapFont();
+        bitmapFont.setScale(2f);
+        bitmapFont.setColor(0.0f, 0.0f, 0.0f, 1.0f);
+        bitmapFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         setPosition(x, y);
         setSize(197, 336);
@@ -31,5 +39,8 @@ public class Deck extends Actor {
         shapeRenderer.end();
 
         batch.begin();
+
+        bitmapFont.draw(batch, "Genre", 50, 900);
+
     }
 }
