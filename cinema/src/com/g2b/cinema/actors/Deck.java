@@ -25,6 +25,11 @@ public class Deck extends Actor {
         shapeRenderer.rect(getX(), getY(), getWidth(), getHeight());
         shapeRenderer.end();
 
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setColor(Color.BLACK);
+        shapeRenderer.rect(getX() , getY(), getWidth(), getHeight());
+        shapeRenderer.end();
+
         batch.begin();
     }
 }
