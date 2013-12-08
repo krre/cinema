@@ -9,15 +9,15 @@ Rectangle {
         y: 10
         spacing: 17
         Opponent {
-
+            color: "#e3e3e3"
         }
 
         Opponent {
-
+            color: "#f2ffbd"
         }
 
         Opponent {
-
+            color: "#ffcaeb"
         }
     }
 
@@ -70,7 +70,7 @@ Rectangle {
         y: 610
         width: 553
         height: 225
-        color: "lightgray"
+        color: "#e2dfff"
     }
 
     Column {
@@ -90,5 +90,12 @@ Rectangle {
         Tool {
 
         }
+    }
+
+    Rectangle {
+        color: "#767399"
+        width: parent.width
+        height: 448
+        anchors.bottom: parent.bottom
     }
 }

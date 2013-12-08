@@ -3,5 +3,5 @@ import QtQuick 2.0
 Rectangle {
     width: 93
     height: 158
-    color: "yellow"
+    color: "#c3beff"
 }
