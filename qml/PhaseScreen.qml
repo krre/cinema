@@ -1,6 +1,7 @@
 import QtQuick 2.1
 import "users"
 import "cards"
+import "action-buttons"
 
 Rectangle {
     Row {
@@ -59,6 +60,34 @@ Rectangle {
         }
 
         Card {
+
+        }
+    }
+
+    Rectangle {
+        id: description
+        x: 0
+        y: 610
+        width: 553
+        height: 225
+        color: "lightgray"
+    }
+
+    Column {
+        x: 567
+        y: 281
+        spacing: 34
+
+        Tool {
+
+
+        }
+
+        Tool {
+
+        }
+
+        Tool {
 
         }
     }
