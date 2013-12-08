@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/Cinema/main.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/PhaseScreen.qml</file>
     </qresource>
 </RCC>

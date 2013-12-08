@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.1
 
 Rectangle {
     id: root
@@ -36,15 +36,8 @@ Rectangle {
         scale: currentScale
         anchors.centerIn: parent
 
-        Text {
-            anchors.centerIn: parent
-            text: "Cinema"
-            font.pointSize: 60
-        }
-
-        MouseArea {
+        PhaseScreen {
             anchors.fill: parent
-            onClicked: Qt.quit()
         }
     }
 }
