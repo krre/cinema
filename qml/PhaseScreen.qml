@@ -30,7 +30,7 @@ Rectangle {
     Deck {
         x: 10
         y: 260
-
+        text: "Жанр"
     }
 
     Grid {
@@ -41,26 +41,32 @@ Rectangle {
         rowSpacing: 10
 
         Card {
+            visible: rndDice > 0
 
         }
 
         Card {
+            visible: rndDice > 1
 
         }
 
         Card {
+            visible: rndDice > 2
 
         }
 
         Card {
+            visible: rndDice > 3
 
         }
 
         Card {
+            visible: rndDice > 4
 
         }
 
         Card {
+            visible: rndDice > 5
 
         }
     }
