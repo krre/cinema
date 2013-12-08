@@ -2,9 +2,13 @@ import QtQuick 2.1
 import "users"
 import "cards"
 import "action-buttons"
+import "../js/phase.js" as Phase
+import "../js/utils.js" as Utils
 
 Rectangle {
     property int rndDice: 0
+    property var genres: Phase.emptyGenreList()
+
     Row {
         x: 10
         y: 10
@@ -30,7 +34,7 @@ Rectangle {
     Deck {
         x: 10
         y: 260
-        text: "Жанр"
+        text: qsTr("Жанр")
     }
 
     Grid {
@@ -41,33 +45,39 @@ Rectangle {
         rowSpacing: 10
 
         Card {
+            id: card0
+            text: genres[0]
             visible: rndDice > 0
-
         }
 
         Card {
+            id: card1
+            text: genres[1]
             visible: rndDice > 1
-
         }
 
         Card {
+            id: card2
+            text: genres[2]
             visible: rndDice > 2
-
         }
 
         Card {
+            id: card3
+            text: genres[3]
             visible: rndDice > 3
-
         }
 
         Card {
+            id: card4
+            text: genres[4]
             visible: rndDice > 4
-
         }
 
         Card {
+            id: card5
+            text: genres[5]
             visible: rndDice > 5
-
         }
     }
 
@@ -88,7 +98,10 @@ Rectangle {
         Tool {
             color: "#fff000"
             text: rndDice
-            onClicked: rndDice = Math.round(Math.random() * (6 - 1) + 1)
+            onClicked: {
+                rndDice = Utils.rndInt(1, 6)
+                genres = Phase.getRndGenreList(rndDice)
+            }
         }
 
         Tool {

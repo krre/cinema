@@ -8,5 +8,7 @@
         <file>qml/cards/Deck.qml</file>
         <file>qml/action-buttons/Tool.qml</file>
         <file>qml/cards/Slot.qml</file>
+        <file>js/phase.js</file>
+        <file>js/utils.js</file>
     </qresource>
 </RCC>

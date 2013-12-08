@@ -21,7 +21,9 @@ ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 OTHER_FILES += \
     android/AndroidManifest.xml \
     qml/main.qml \
-    qml/PhaseScreen.qml
+    qml/PhaseScreen.qml \
+    js/phase.js \
+    js/utils.js
 
 RESOURCES += \
     resources.qrc
