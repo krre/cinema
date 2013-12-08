@@ -4,6 +4,7 @@ import "cards"
 import "action-buttons"
 
 Rectangle {
+    property int rndDice: 0
     Row {
         x: 10
         y: 10
@@ -79,15 +80,18 @@ Rectangle {
         spacing: 34
 
         Tool {
+            color: "#fff000"
+            text: rndDice
+            onClicked: rndDice = Math.round(Math.random() * (6 - 1) + 1)
+        }
 
+        Tool {
+            color: "#00fff0"
 
         }
 
         Tool {
-
-        }
-
-        Tool {
+            color: "#ff3a3a"
 
         }
     }

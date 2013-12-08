@@ -1,7 +1,21 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.1
 
-Button {
+Rectangle {
+    id: root
     width: 145
     height: 145
+    property alias text: label.text
+    signal clicked
+
+    Text {
+        id: label
+        anchors.centerIn: parent
+        font.pointSize: 25
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: root.clicked()
+    }
+
 }
