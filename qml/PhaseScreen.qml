@@ -97,5 +97,20 @@ Rectangle {
         width: parent.width
         height: 448
         anchors.bottom: parent.bottom
+
+        Flow {
+            x: 3
+            y: 43
+            width: 620
+            height: 420
+            spacing: 4
+
+            Repeater {
+                model: 10
+                Slot {
+
+                }
+            }
+        }
     }
 }

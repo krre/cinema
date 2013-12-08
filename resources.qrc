@@ -7,5 +7,6 @@
         <file>qml/cards/Card.qml</file>
         <file>qml/cards/Deck.qml</file>
         <file>qml/action-buttons/Tool.qml</file>
+        <file>qml/cards/Slot.qml</file>
     </qresource>
 </RCC>
