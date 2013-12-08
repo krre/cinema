@@ -103,13 +103,38 @@ Rectangle {
             y: 43
             width: 620
             height: 420
-            spacing: 4
+            spacing: 3
 
             Repeater {
                 model: 10
                 Slot {
 
                 }
+            }
+        }
+
+        Column {
+            x: 613
+            y: 10
+            spacing: 22
+
+            Rectangle {
+                width: 100
+                height: 97
+                color: "#aca9cc"
+            }
+
+            Rectangle {
+                width: 100
+                height: 97
+                color: "#aca9cc"
+            }
+
+            Rectangle {
+                width: 100
+                height: 174
+                color: "#00fff0"
+                border.color: "black"
             }
         }
     }
