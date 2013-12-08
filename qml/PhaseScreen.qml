@@ -8,6 +8,7 @@ import "../js/utils.js" as Utils
 Rectangle {
     property int rndDice: 0
     property var genres: Phase.emptyGenreList()
+    property int zStack: 100
 
     Row {
         x: 10
@@ -40,6 +41,7 @@ Rectangle {
     Grid {
         x: 233
         y: 270
+        z: 100
         columns: 3
         columnSpacing: 15
         rowSpacing: 10
@@ -48,36 +50,42 @@ Rectangle {
             id: card0
             text: genres[0]
             visible: rndDice > 0
+            onPressed: z = ++zStack
         }
 
         Card {
             id: card1
             text: genres[1]
             visible: rndDice > 1
+            onPressed: z = ++zStack
         }
 
         Card {
             id: card2
             text: genres[2]
             visible: rndDice > 2
+            onPressed: z = ++zStack
         }
 
         Card {
             id: card3
             text: genres[3]
             visible: rndDice > 3
+            onPressed: z = ++zStack
         }
 
         Card {
             id: card4
             text: genres[4]
             visible: rndDice > 4
+            onPressed: z = ++zStack
         }
 
         Card {
             id: card5
             text: genres[5]
             visible: rndDice > 5
+            onPressed: z = ++zStack
         }
     }
 
