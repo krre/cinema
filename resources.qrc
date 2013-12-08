@@ -4,5 +4,7 @@
         <file>qml/PhaseScreen.qml</file>
         <file>qml/users/Gamer.qml</file>
         <file>qml/users/Opponent.qml</file>
+        <file>qml/cards/Card.qml</file>
+        <file>qml/cards/Deck.qml</file>
     </qresource>
 </RCC>
