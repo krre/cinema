@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>qml/main.qml</file>
         <file>qml/PhaseScreen.qml</file>
+        <file>qml/users/Gamer.qml</file>
+        <file>qml/users/Opponent.qml</file>
     </qresource>
 </RCC>

@@ -1,7 +1,26 @@
 import QtQuick 2.1
+import "users"
 
 Rectangle {
-    width: 100
-    height: 62
-    color: "yellow"
+    Row {
+        x: 10
+        y: 10
+        spacing: 17
+        Opponent {
+
+        }
+
+        Opponent {
+
+        }
+
+        Opponent {
+
+        }
+    }
+
+    Gamer {
+        x: 485
+        y: 10
+    }
 }
