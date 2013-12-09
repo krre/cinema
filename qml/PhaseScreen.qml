@@ -1,4 +1,4 @@
-import QtQuick 2.1
+import QtQuick 2.2
 import "users"
 import "cards"
 import "action-buttons"
@@ -47,6 +47,7 @@ Rectangle {
         rowSpacing: 10
 
         Repeater {
+            id: cards
             model: 6
 
             Card {
@@ -77,6 +78,9 @@ Rectangle {
             onClicked: {
                 rndDice = Utils.rndInt(1, 6)
                 genres = Phase.getRndGenreList(rndDice)
+                for (var i = 0; i < cards.count; i++) {
+                    cards.itemAt(i).tile.opacity = 1
+                }
             }
         }
 
@@ -137,17 +141,15 @@ Rectangle {
             }
         }
 
-        Rectangle {
+        DropArea {
+            id: dropTarget
             anchors.fill: parent
-            color: "#22ff05"
-            opacity: mouseArea.containsMouse ? 0.5 : 0
 
-            MouseArea {
-                id: mouseArea
+            Rectangle {
+                id: dropRectangle
                 anchors.fill: parent
-                hoverEnabled: true
-                onEntered: opacity
-
+                color: "#ff0800"
+                opacity: dropTarget.containsDrag ? 0.5 : 0
             }
         }
     }

@@ -1,8 +1,9 @@
-import QtQuick 2.0
+import QtQuick 2.2
 
 Item {
     id: root
     property alias text: label.text
+    property alias tile: tile
 
     signal pressed
 
@@ -13,7 +14,7 @@ Item {
         id: mouseArea
         anchors.fill: parent
         drag.target: tile
-        onReleased: parent = tile.Drag.target !== null ? tile.Drag.target : root
+        onReleased: if (tile.Drag.target !== null) tile.opacity = 0
         onPressed: root.pressed()
 
         Rectangle {
