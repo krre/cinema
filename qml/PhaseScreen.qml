@@ -46,46 +46,14 @@ Rectangle {
         columnSpacing: 15
         rowSpacing: 10
 
-        Card {
-            id: card0
-            text: genres[0]
-            visible: rndDice > 0
-            onPressed: z = ++zStack
-        }
+        Repeater {
+            model: 6
 
-        Card {
-            id: card1
-            text: genres[1]
-            visible: rndDice > 1
-            onPressed: z = ++zStack
-        }
-
-        Card {
-            id: card2
-            text: genres[2]
-            visible: rndDice > 2
-            onPressed: z = ++zStack
-        }
-
-        Card {
-            id: card3
-            text: genres[3]
-            visible: rndDice > 3
-            onPressed: z = ++zStack
-        }
-
-        Card {
-            id: card4
-            text: genres[4]
-            visible: rndDice > 4
-            onPressed: z = ++zStack
-        }
-
-        Card {
-            id: card5
-            text: genres[5]
-            visible: rndDice > 5
-            onPressed: z = ++zStack
+            Card {
+                text: genres[modelData]
+                visible: rndDice > modelData
+                onPressed: z = ++zStack
+            }
         }
     }
 
@@ -166,6 +134,20 @@ Rectangle {
                 height: 174
                 color: "#00fff0"
                 border.color: "black"
+            }
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            color: "#22ff05"
+            opacity: mouseArea.containsMouse ? 0.5 : 0
+
+            MouseArea {
+                id: mouseArea
+                anchors.fill: parent
+                hoverEnabled: true
+                onEntered: opacity
+
             }
         }
     }
