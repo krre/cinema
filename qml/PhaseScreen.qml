@@ -10,6 +10,8 @@ Rectangle {
     property var genres: Phase.emptyGenreList()
     property int zStack: 100
     property int genreIndex: -1
+    property var descriptions: Phase.descriptionList()
+    property int stateNumber: 0
 
     Row {
         x: 10
@@ -67,6 +69,15 @@ Rectangle {
         width: 553
         height: 225
         color: "#e2dfff"
+
+        Text {
+            width: parent.width - 30
+            anchors.centerIn: parent
+            text: descriptions[stateNumber]
+            font.pointSize: 18
+            wrapMode: Text.Wrap
+
+        }
     }
 
     Column {
@@ -83,6 +94,7 @@ Rectangle {
                 for (var i = 0; i < cards.count; i++) {
                     cards.itemAt(i).tile.opacity = 1
                 }
+                stateNumber = 1
             }
         }
 

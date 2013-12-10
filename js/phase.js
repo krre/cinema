@@ -49,3 +49,11 @@ function getRndGenreList(number) {
 
     return rndGenres
 }
+
+function descriptionList() {
+    return [
+                qsTr("Бросьте игральную кость"),
+                qsTr("Перетащите выбранный вами жанр в руку игрока"),
+                qsTr("Сбросьте в музор любой из оставшихся жанров")
+            ]
+}
