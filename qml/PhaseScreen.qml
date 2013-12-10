@@ -9,6 +9,7 @@ Rectangle {
     property int rndDice: 0
     property var genres: Phase.emptyGenreList()
     property int zStack: 100
+    property int genreIndex: -1
 
     Row {
         x: 10
@@ -54,6 +55,7 @@ Rectangle {
                 text: genres[modelData]
                 visible: rndDice > modelData
                 onPressed: z = ++zStack
+                onFallToSlot: genreIndex = Phase.genreIndexByName(text)
             }
         }
     }
@@ -100,6 +102,13 @@ Rectangle {
         width: parent.width
         height: 448
         anchors.bottom: parent.bottom
+
+        Text {
+            y: 4
+            text: Phase.genreByIndex(genreIndex)
+            anchors.horizontalCenter: parent.horizontalCenter
+            font.pointSize: 20
+        }
 
         Flow {
             x: 3

@@ -6,6 +6,7 @@ Item {
     property alias tile: tile
 
     signal pressed
+    signal fallToSlot()
 
     width: 93
     height: 158
@@ -14,7 +15,12 @@ Item {
         id: mouseArea
         anchors.fill: parent
         drag.target: tile
-        onReleased: if (tile.Drag.target !== null) tile.opacity = 0
+        onReleased: {
+            if (tile.Drag.target !== null) {
+                tile.opacity = 0
+                fallToSlot()
+            }
+        }
         onPressed: root.pressed()
 
         Rectangle {

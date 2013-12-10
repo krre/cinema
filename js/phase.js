@@ -16,6 +16,28 @@ function genreList() {
             ]
 }
 
+function genreByIndex(index) {
+    if (index >= 0) {
+        var genres = genreList()
+        return genres[index]
+    }
+    else {
+        return ""
+    }
+}
+
+function genreIndexByName(name) {
+    var genres = genreList()
+    for (var i = 0; i < genres.length; i++) {
+        console.log(genres[i] + " " + name)
+        if (genres[i] == name) {
+            return i
+        }
+    }
+
+    return -1
+}
+
 function getRndGenreList(number) {
     var genres = genreList()
     var rndGenres = emptyGenreList()
