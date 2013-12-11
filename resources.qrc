@@ -13,5 +13,8 @@
         <file>qml/images/dice_action.png</file>
         <file>qml/images/fortune_action.png</file>
         <file>qml/images/next_action.png</file>
+        <file>qml/images/fortune-area.png</file>
+        <file>qml/images/recycle-area.png</file>
+        <file>qml/images/tool-area.png</file>
     </qresource>
 </RCC>

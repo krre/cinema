@@ -84,10 +84,8 @@ Rectangle {
         y: 281
         spacing: 34
 
-        // игральная кость
+        // кнопка игральная кость
         Image {
-            width: 145
-            height: 145
             source: "images/dice_action.png"
             opacity: diceMouseArea.pressed ? 0.5 : 1
 
@@ -105,10 +103,8 @@ Rectangle {
             }
         }
 
-        // фортуна
+        // кнопка фортуна
         Image {
-            width: 145
-            height: 145
             source: "images/fortune_action.png"
             opacity: fortuneMouseArea.pressed ? 0.5 : 1
 
@@ -121,10 +117,8 @@ Rectangle {
             }
         }
 
-        // переход хода
+        // кнопка переход хода
         Image {
-            width: 145
-            height: 145
             source: "images/next_action.png"
             opacity: nextMouseArea.pressed ? 0.5 : 1
 
@@ -139,7 +133,7 @@ Rectangle {
     }
 
     Rectangle {
-        color: "#767399"
+        color: "#0e143e"
         width: parent.width
         height: 448
         anchors.bottom: parent.bottom
@@ -171,23 +165,39 @@ Rectangle {
             y: 10
             spacing: 22
 
-            Rectangle {
-                width: 100
-                height: 97
-                color: "#aca9cc"
+            Image {
+                source: "images/tool-area.png"
             }
 
-            Rectangle {
-                width: 100
-                height: 97
-                color: "#aca9cc"
+            Image {
+                source: "images/recycle-area.png"
             }
 
-            Rectangle {
-                width: 100
-                height: 174
-                color: "#00fff0"
-                border.color: "black"
+            Image {
+                source: "images/fortune-area.png"
+                Text {
+                    y: 13
+                    width: parent.width
+                    text: qsTr("Фортуна игрока")
+                    font.pointSize: 17
+                    wrapMode: Text.Wrap
+                    horizontalAlignment: Text.AlignHCenter
+
+                }
+
+                Text {
+                    x: 60
+                    y: 75
+                    text: "0"
+                    font.pointSize: 30
+                }
+
+                Text {
+                    x: 60
+                    y: 115
+                    text: "0"
+                    font.pointSize: 30
+                }
             }
         }
 
