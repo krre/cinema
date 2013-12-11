@@ -17,14 +17,17 @@ Rectangle {
         spacing: 17
         Opponent {
             color: "#e3e3e3"
+            name: qsTr("Игрок 1")
         }
 
         Opponent {
             color: "#f2ffbd"
+            name: qsTr("Игрок 2")
         }
 
         Opponent {
             color: "#ffcaeb"
+            name: qsTr("Игрок 3")
         }
     }
 
