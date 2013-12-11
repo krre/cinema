@@ -10,5 +10,6 @@
         <file>qml/cards/Slot.qml</file>
         <file>js/phase.js</file>
         <file>js/utils.js</file>
+        <file>js/data.js</file>
     </qresource>
 </RCC>

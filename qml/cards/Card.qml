@@ -37,8 +37,11 @@ Item {
 
             Text {
                 id: label
+                width: parent.width
                 anchors.centerIn: parent
+                horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 15
+                wrapMode: Text.WrapAnywhere
             }
 
             states: State {

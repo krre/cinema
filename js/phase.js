@@ -4,21 +4,9 @@ function emptyGenreList() {
     return ["", "", "", "", "", ""]
 }
 
-function genreList() {
-    return [
-                qsTr("Фантаст."),
-                qsTr("Комедия"),
-                qsTr("Драма"),
-                qsTr("Ужасы"),
-                qsTr("Мюзикл"),
-                qsTr("Боевик"),
-                qsTr("Триллер")
-            ]
-}
-
 function genreByIndex(index) {
     if (index >= 0) {
-        var genres = genreList()
+        var genres = globalData.const.genres
         return genres[index]
     }
     else {
@@ -27,7 +15,7 @@ function genreByIndex(index) {
 }
 
 function genreIndexByName(name) {
-    var genres = genreList()
+    var genres = globalData.const.genres
     for (var i = 0; i < genres.length; i++) {
         if (genres[i] == name) {
             return i
@@ -38,7 +26,7 @@ function genreIndexByName(name) {
 }
 
 function getRndGenreList(number) {
-    var genres = genreList()
+    var genres = JSON.parse(JSON.stringify(globalData.const.genres))
     var rndGenres = emptyGenreList()
     for (var i = number - 1, j = 0, k = genres.length - 1; i >= 0; i--, j++, k--) {
         var rndPos = Utils.rndInt(0, k)
@@ -47,12 +35,4 @@ function getRndGenreList(number) {
     }
 
     return rndGenres
-}
-
-function descriptionList() {
-    return [
-                qsTr("Бросьте игральную кость"),
-                qsTr("Перетащите выбранный вами жанр в руку игрока"),
-                qsTr("Сбросьте в музор любой из оставшихся жанров")
-            ]
 }

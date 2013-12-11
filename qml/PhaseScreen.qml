@@ -10,7 +10,6 @@ Rectangle {
     property var genres: Phase.emptyGenreList()
     property int zStack: 100
     property int genreIndex: -1
-    property var descriptions: Phase.descriptionList()
     property int stateNumber: 0
 
     Row {
@@ -73,11 +72,12 @@ Rectangle {
         Text {
             width: parent.width - 30
             anchors.centerIn: parent
-            text: descriptions[stateNumber]
+            text: globalData.text.phases.first[stateNumber]
             font.pointSize: 18
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
         }
+
     }
 
     Column {
@@ -85,6 +85,7 @@ Rectangle {
         y: 281
         spacing: 34
 
+        // игральная кость
         Tool {
             color: "#fff000"
             text: rndDice

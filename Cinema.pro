@@ -23,7 +23,8 @@ OTHER_FILES += \
     qml/main.qml \
     qml/PhaseScreen.qml \
     js/phase.js \
-    js/utils.js
+    js/utils.js \
+    js/data.js
 
 RESOURCES += \
     resources.qrc

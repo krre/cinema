@@ -1,4 +1,5 @@
 import QtQuick 2.1
+import "../js/data.js" as Data
 
 Rectangle {
     id: root
@@ -8,8 +9,11 @@ Rectangle {
     property int virtualWidth: 720
     property int virtualHeight: 1280
     property real currentScale: 1
+    property var globalData: Data.init()
 
-    Component.onCompleted:  calculateSize()
+    Component.onCompleted: {
+        calculateSize()
+    }
 
     function calculateSize() {
         var aspectRatio = width / height
