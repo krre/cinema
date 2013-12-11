@@ -1,7 +1,6 @@
 import QtQuick 2.2
 import "users"
 import "cards"
-import "action-buttons"
 import "../js/phase.js" as Phase
 import "../js/utils.js" as Utils
 
@@ -86,27 +85,56 @@ Rectangle {
         spacing: 34
 
         // игральная кость
-        Tool {
-            color: "#fff000"
-            text: rndDice
-            onClicked: {
-                rndDice = Utils.rndInt(1, 6)
-                genres = Phase.getRndGenreList(rndDice)
-                for (var i = 0; i < cards.count; i++) {
-                    cards.itemAt(i).tile.opacity = 1
+        Image {
+            width: 145
+            height: 145
+            source: "images/dice_action.png"
+            opacity: diceMouseArea.pressed ? 0.5 : 1
+
+            MouseArea {
+                id: diceMouseArea
+                anchors.fill: parent
+                onClicked:  {
+                    rndDice = Utils.rndInt(1, 6)
+                    genres = Phase.getRndGenreList(rndDice)
+                    for (var i = 0; i < cards.count; i++) {
+                        cards.itemAt(i).tile.opacity = 1
+                    }
+                    stateNumber = 1
                 }
-                stateNumber = 1
             }
         }
 
-        Tool {
-            color: "#00fff0"
+        // фортуна
+        Image {
+            width: 145
+            height: 145
+            source: "images/fortune_action.png"
+            opacity: fortuneMouseArea.pressed ? 0.5 : 1
 
+            MouseArea {
+                id: fortuneMouseArea
+                anchors.fill: parent
+                onClicked:  {
+                    console.log("fortune")
+                }
+            }
         }
 
-        Tool {
-            color: "#ff3a3a"
+        // переход хода
+        Image {
+            width: 145
+            height: 145
+            source: "images/next_action.png"
+            opacity: nextMouseArea.pressed ? 0.5 : 1
 
+            MouseArea {
+                id: nextMouseArea
+                anchors.fill: parent
+                onClicked:  {
+                    console.log("next")
+                }
+            }
         }
     }
 

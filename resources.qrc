@@ -6,10 +6,12 @@
         <file>qml/users/Opponent.qml</file>
         <file>qml/cards/Card.qml</file>
         <file>qml/cards/Deck.qml</file>
-        <file>qml/action-buttons/Tool.qml</file>
         <file>qml/cards/Slot.qml</file>
         <file>js/phase.js</file>
         <file>js/utils.js</file>
         <file>js/data.js</file>
+        <file>qml/images/dice_action.png</file>
+        <file>qml/images/fortune_action.png</file>
+        <file>qml/images/next_action.png</file>
     </qresource>
 </RCC>
