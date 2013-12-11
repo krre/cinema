@@ -29,7 +29,6 @@ function genreByIndex(index) {
 function genreIndexByName(name) {
     var genres = genreList()
     for (var i = 0; i < genres.length; i++) {
-        console.log(genres[i] + " " + name)
         if (genres[i] == name) {
             return i
         }

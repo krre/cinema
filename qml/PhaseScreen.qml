@@ -76,7 +76,7 @@ Rectangle {
             text: descriptions[stateNumber]
             font.pointSize: 18
             wrapMode: Text.Wrap
-
+            horizontalAlignment: Text.AlignHCenter
         }
     }
 
