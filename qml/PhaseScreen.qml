@@ -169,14 +169,28 @@ Rectangle {
             y: 10
             spacing: 22
 
+            // инструменты
             Image {
                 source: "images/tool-area.png"
             }
 
+            // корзина
             Image {
                 source: "images/recycle-area.png"
+                DropArea {
+                    id: dropRecycle
+                    anchors.fill: parent
+
+                    Rectangle {
+                        id: dropRecycleRectangle
+                        anchors.fill: parent
+                        color: "#00ff22"
+                        opacity: dropRecycle.containsDrag ? 0.5 : 0
+                    }
+                }
             }
 
+            // фортуна
             Image {
                 source: "images/fortune-area.png"
                 Text {
@@ -206,14 +220,15 @@ Rectangle {
         }
 
         DropArea {
-            id: dropTarget
+            id: dropHandTarget
             anchors.fill: parent
+            keys: "genre"
 
             Rectangle {
-                id: dropRectangle
+                id: dropHandRectangle
                 anchors.fill: parent
                 color: "#ff0800"
-                opacity: dropTarget.containsDrag ? 0.5 : 0
+                opacity: dropHandTarget.containsDrag ? 0.5 : 0
             }
         }
     }
