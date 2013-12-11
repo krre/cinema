@@ -146,6 +146,7 @@ Rectangle {
             text: Phase.genreByIndex(genreIndex)
             anchors.horizontalCenter: parent.horizontalCenter
             font.pointSize: 20
+            color: "white"
         }
 
         Flow {

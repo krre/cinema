@@ -5,7 +5,6 @@ Rectangle {
     property alias score: score.text
     width: 140
     height: 143
-    color: "blue"
 
     Text {
         id: name
