@@ -57,11 +57,12 @@ Rectangle {
 
             Card {
                 text: genres[modelData]
-                visible: rndDice > modelData
+                visible: text != ""
                 onPressed: z = ++zStack
                 keys: "card"
                 onFallToSlot: if (root.state == "02-select-genre") {
                                   genreIndex = Phase.genreIndexByName(text)
+
                                   root.state = "03-garbage"
                               }
             }
@@ -104,6 +105,7 @@ Rectangle {
                 onClicked:  {
                     rndDice = Utils.rndInt(1, 6)
                     genres = Phase.getRndGenreList(rndDice)
+                    console.log(genres)
                     for (var i = 0; i < cards.count; i++) {
                         cards.itemAt(i).tile.opacity = 1
                     }
@@ -257,6 +259,11 @@ Rectangle {
             PropertyChanges { target: root; stateNumber: 2 }
             PropertyChanges { target: dropHandTarget; keys: "noCard" }
             PropertyChanges { target: dropRecycleTarget; keys: "card" }
+        },
+
+        State {
+            name: "04-ejection-cards"
+            PropertyChanges { }
         },
 
         State {
