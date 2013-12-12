@@ -100,6 +100,7 @@ Rectangle {
             MouseArea {
                 id: diceMouseArea
                 anchors.fill: parent
+                visible: root.state == "01-dice"
                 onClicked:  {
                     rndDice = Utils.rndInt(1, 6)
                     genres = Phase.getRndGenreList(rndDice)
