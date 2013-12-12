@@ -4,6 +4,7 @@ Item {
     id: root
     property alias text: label.text
     property alias tile: tile
+    property string keys
 
     signal pressed
     signal fallToSlot()
@@ -34,6 +35,7 @@ Item {
             border.width: 3
 
             Drag.active: mouseArea.drag.active
+            Drag.keys: keys
 
             Text {
                 id: label

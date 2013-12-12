@@ -5,6 +5,7 @@ import "../js/phase.js" as Phase
 import "../js/utils.js" as Utils
 
 Rectangle {
+    id: root
     property int rndDice: 0
     property var genres: Phase.emptyGenreList()
     property int zStack: 100
@@ -58,7 +59,11 @@ Rectangle {
                 text: genres[modelData]
                 visible: rndDice > modelData
                 onPressed: z = ++zStack
-                onFallToSlot: genreIndex = Phase.genreIndexByName(text)
+                keys: "card"
+                onFallToSlot: if (root.state == "02-select-genre") {
+                                  genreIndex = Phase.genreIndexByName(text)
+                                  root.state = "03-garbage"
+                              }
             }
         }
     }
@@ -101,7 +106,7 @@ Rectangle {
                     for (var i = 0; i < cards.count; i++) {
                         cards.itemAt(i).tile.opacity = 1
                     }
-                    stateNumber = 1
+                    root.state = "02-select-genre"
                 }
             }
         }
@@ -178,14 +183,14 @@ Rectangle {
             Image {
                 source: "images/recycle-area.png"
                 DropArea {
-                    id: dropRecycle
+                    id: dropRecycleTarget
                     anchors.fill: parent
 
                     Rectangle {
                         id: dropRecycleRectangle
                         anchors.fill: parent
-                        color: "#00ff22"
-                        opacity: dropRecycle.containsDrag ? 0.5 : 0
+                        color: "#ff0800"
+                        opacity: dropRecycleTarget.containsDrag ? 0.5 : 0
                     }
                 }
             }
@@ -222,7 +227,7 @@ Rectangle {
         DropArea {
             id: dropHandTarget
             anchors.fill: parent
-            keys: "genre"
+            onDropped: console.log(drop)
 
             Rectangle {
                 id: dropHandRectangle
@@ -232,4 +237,33 @@ Rectangle {
             }
         }
     }
+
+    states: [
+        State {
+            name: "01-dice"
+            PropertyChanges { target: root; stateNumber: 0 }
+        },
+
+        State {
+            name: "02-select-genre"
+            PropertyChanges { target: root; stateNumber: 1 }
+            PropertyChanges { target: dropHandTarget; keys: "card" }
+            PropertyChanges { target: dropRecycleTarget; keys: "noCard" }
+        },
+
+        State {
+            name: "03-garbage"
+            PropertyChanges { target: root; stateNumber: 2 }
+            PropertyChanges { target: dropHandTarget; keys: "noCard" }
+            PropertyChanges { target: dropRecycleTarget; keys: "card" }
+        },
+
+        State {
+            name: "04-next-move"
+        }
+
+    ]
+
+    state: "01-dice"
+    onStateChanged: console.log(root.state)
 }
