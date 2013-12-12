@@ -6,12 +6,12 @@ function init() {
         const: {
             genres: [
                 qsTr("Фантастика"),
-                qsTr("Комедия"),
-                qsTr("Драма"),
                 qsTr("Ужасы"),
-                qsTr("Мюзикл"),
+                qsTr("Драма"),
                 qsTr("Боевик"),
-                qsTr("Триллер")
+                qsTr("Приключения"),
+                qsTr("Комедия"),
+                qsTr("Мюзикл")
             ]
         },
         text: {
