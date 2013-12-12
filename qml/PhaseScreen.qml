@@ -1,4 +1,4 @@
-import QtQuick 2.2
+import QtQuick 2.1
 import "users"
 import "cards"
 import "../js/phase.js" as Phase
@@ -197,7 +197,7 @@ Rectangle {
                     y: 13
                     width: parent.width
                     text: qsTr("Фортуна игрока")
-                    font.pointSize: 17
+                    font.pointSize: 16
                     wrapMode: Text.Wrap
                     horizontalAlignment: Text.AlignHCenter
 
@@ -207,7 +207,7 @@ Rectangle {
                     x: 60
                     y: 75
                     text: "0"
-                    font.pointSize: 30
+                    font.pointSize: 27
                 }
 
                 Text {
