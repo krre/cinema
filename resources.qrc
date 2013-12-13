@@ -15,9 +15,9 @@
         <file>qml/images/next_action.png</file>
         <file>qml/images/fortune-area.png</file>
         <file>qml/images/recycle-area.png</file>
-        <file>qml/images/tool-area.png</file>
         <file>qml/images/eye.png</file>
         <file>qml/images/star.png</file>
         <file>qml/images/no_avatar.png</file>
+        <file>qml/images/market-area.png</file>
     </qresource>
 </RCC>

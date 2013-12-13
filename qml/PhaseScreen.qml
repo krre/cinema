@@ -177,9 +177,9 @@ Rectangle {
             y: 10
             spacing: 22
 
-            // инструменты
+            // рынок
             Image {
-                source: "images/tool-area.png"
+                source: "images/market-area.png"
             }
 
             // корзина
