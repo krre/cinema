@@ -1,5 +1,25 @@
 .import "utils.js" as Utils
 
+function Deck(source, cut) {
+    var workList = []
+
+    if (source) {
+        var sourceList =  JSON.parse(JSON.stringify(source))
+        for (var i = cut - 1, j = 0; i >= 0; i--, j++) {
+            var rndPos = Utils.rndInt(0, sourceList.length - 1)
+            workList.push(sourceList[rndPos])
+            sourceList.splice(rndPos, 1)
+        }
+    }
+    this.remove = function(pos) {
+       workList.splice(pos, 1)
+        console.log(sourceList)
+    }
+
+    this.count = workList.length
+    this.list = workList
+}
+
 function emptyGenreList() {
     return ["", "", "", "", "", ""]
 }

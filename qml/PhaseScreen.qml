@@ -7,10 +7,17 @@ import "../js/utils.js" as Utils
 Rectangle {
     id: root
     property int rndDice: 0
-    property var genres: Phase.emptyGenreList()
+//    property var genres: Phase.emptyGenreList()
+    property var genres: new Phase.Deck()
     property int zStack: 100
     property int genreIndex: -1
     property int stateNumber: 0
+
+    Component.onCompleted: {
+//        var x = new Phase.Deck(globalData.const.genres, 4)
+//        var x = new Phase.Deck()
+//        Utils.msgbox(x.list)
+    }
 
     Row {
         x: 10
@@ -56,14 +63,20 @@ Rectangle {
             model: 6
 
             Card {
-                text: genres[modelData]
+                text: genres.list[modelData] ? genres.list[modelData] : ""
                 visible: text != ""
                 onPressed: z = ++zStack
                 keys: "card"
                 onFallToSlot: if (root.state == "02-select-genre") {
                                   genreIndex = Phase.genreIndexByName(text)
-
-                                  root.state = "03-garbage"
+                                  genres.remove(modelData)
+                                  console.log(genres.count)
+                                  if (genres.count >= 1) {
+                                    root.state = "03-garbage"
+                                  }
+                                  else {
+                                      root.state = "04-ejection-cards"
+                                  }
                               }
             }
         }
@@ -103,9 +116,9 @@ Rectangle {
                 anchors.fill: parent
                 visible: root.state == "01-dice"
                 onClicked:  {
-                    rndDice = Utils.rndInt(1, 6)
-                    genres = Phase.getRndGenreList(rndDice)
-                    console.log(genres)
+                    rndDice = Utils.rndInt(1, 2)
+                    genres = new Phase.Deck(globalData.const.genres, rndDice)
+                    // отображение карточек, скрытых в прошлую игру
                     for (var i = 0; i < cards.count; i++) {
                         cards.itemAt(i).tile.opacity = 1
                     }
@@ -263,6 +276,7 @@ Rectangle {
 
         State {
             name: "04-ejection-cards"
+            PropertyChanges { target: root; stateNumber: 3 }
             PropertyChanges { }
         },
 
