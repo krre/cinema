@@ -1,5 +1,6 @@
 import QtQuick 2.1
 import "../js/data.js" as Data
+import "../js/gamer.js" as Gamer
 
 Rectangle {
     id: root

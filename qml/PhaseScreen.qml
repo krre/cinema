@@ -3,6 +3,8 @@ import "users"
 import "cards"
 import "../js/phase.js" as Phase
 import "../js/utils.js" as Utils
+import "../js/gamer.js" as Gamer
+import "../js/data.js" as Data
 
 Rectangle {
     id: root
@@ -13,9 +15,11 @@ Rectangle {
     property int stateNumber: 0
 
     Component.onCompleted: {
-//        var x = new Phase.Deck(gameData.const.genres, 4)
-//        var x = new Phase.Deck()
-//        Utils.msgbox(x.list)
+        for (var i = 0; i < 4; i++) {
+            var name = gameData.const.gamers.names[i]
+            gameData.variable.gamers.push(new Gamer.Gamer(name))
+        }
+        Data.update()
     }
 
     Row {
@@ -24,24 +28,24 @@ Rectangle {
         spacing: 17
         Opponent {
             color: "#e3e3e3"
-            name: gameData.variable.gamers.list[1].name
+            name: gameData.variable.gamers[1].name
         }
 
         Opponent {
             color: "#f2ffbd"
-            name: gameData.variable.gamers.list[2].name
+            name: gameData.variable.gamers[2].name
         }
 
         Opponent {
             color: "#ffcaeb"
-            name: gameData.variable.gamers.list[3].name
+            name: gameData.variable.gamers[3].name
         }
     }
 
     Gamer {
         x: 485
         y: 10
-        name: gameData.variable.gamers.list[0].name
+        name: gameData.variable.gamers[0].name
     }
 
     Deck {
@@ -102,6 +106,7 @@ Rectangle {
         }
     }
 
+    // подсказки
     Rectangle {
         id: description
         x: 0
@@ -182,6 +187,7 @@ Rectangle {
         height: 448
         anchors.bottom: parent.bottom
 
+        // текущий жанр
         Text {
             y: 4
             text: Phase.genreByIndex(genreIndex)

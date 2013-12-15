@@ -1,3 +1,7 @@
+function update() {
+    gameData = gameData
+}
+
 function init() {
     var i
     // режиссёры
@@ -26,6 +30,15 @@ function init() {
             version: 1
         },
         const: {
+            gamers: {
+                names: [
+                    qsTr("Я горячо любимый"),
+                    qsTr("Трус"),
+                    qsTr("Балбес"),
+                    qsTr("Бывалый"),
+                ]
+            },
+
             genres: {
                 name: qsTr("ЖАНР"),
                 list: [
@@ -69,15 +82,7 @@ function init() {
         },
         variable: {
             phase: 0,
-            gamers: {
-                count: 4,
-                list: [
-                    { name: qsTr("Я горячо любимый")},
-                    { name: qsTr("Трус") },
-                    { name: qsTr("Балбес") },
-                    { name: qsTr("Бывалый") }
-                ]
-            },
+            gamers: [],
             genreDeck: [],
             directorDeck: [],
             actorDeck: [],

@@ -9,3 +9,10 @@ function msgbox(msg) {
         visible: true;
         text: "' + msg + '"}', root)
 }
+
+function getFromDeck(deck, count) {
+    if (deck.length > count) {
+        return
+    }
+
+}

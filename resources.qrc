@@ -19,5 +19,6 @@
         <file>qml/images/star.png</file>
         <file>qml/images/no_avatar.png</file>
         <file>qml/images/market-area.png</file>
+        <file>js/gamer.js</file>
     </qresource>
 </RCC>
