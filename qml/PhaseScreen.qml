@@ -112,7 +112,7 @@ Rectangle {
         Text {
             width: parent.width - 30
             anchors.centerIn: parent
-            text: gameData.text.phases.first[stateNumber]
+            text: gameData.text.phases.genre[stateNumber]
             font.pointSize: 18
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
