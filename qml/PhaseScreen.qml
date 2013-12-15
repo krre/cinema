@@ -24,29 +24,30 @@ Rectangle {
         spacing: 17
         Opponent {
             color: "#e3e3e3"
-            name: gameData.const.opponents[0]
+            name: gameData.variable.gamers.list[1].name
         }
 
         Opponent {
             color: "#f2ffbd"
-            name: gameData.const.opponents[1]
+            name: gameData.variable.gamers.list[2].name
         }
 
         Opponent {
             color: "#ffcaeb"
-            name: gameData.const.opponents[2]
+            name: gameData.variable.gamers.list[3].name
         }
     }
 
     Gamer {
         x: 485
         y: 10
+        name: gameData.variable.gamers.list[0].name
     }
 
     Deck {
         x: 10
         y: 260
-        text: qsTr("Жанр")
+        text: gameData.const.genres.name
     }
 
     Grid {
@@ -94,7 +95,7 @@ Rectangle {
                                       root.state = "04-ejection-cards"
                                   }
                               }
-                              else if (root.state = "03-garbage") {
+                              else if (root.state == "03-garbage") {
                                   root.state = "04-ejection-cards"
                               }
             }
@@ -135,7 +136,7 @@ Rectangle {
                 anchors.fill: parent
                 onClicked:  {
                     rndDice = Utils.rndInt(1, 6)
-                    genres = new Phase.Deck(gameData.const.genres, rndDice)
+                    genres = new Phase.Deck(gameData.const.genres.list, rndDice)
                     // отображение карточек, скрытых в прошлую игру
                     for (var i = 0; i < cards.count; i++) {
                         cards.itemAt(i).tile.opacity = 1
@@ -239,7 +240,6 @@ Rectangle {
                     font.pointSize: 16
                     wrapMode: Text.Wrap
                     horizontalAlignment: Text.AlignHCenter
-
                 }
 
                 Text {

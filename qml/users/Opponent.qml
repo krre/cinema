@@ -10,7 +10,6 @@ Rectangle {
         id: name
         y: 8
         width: parent.width
-        text: qsTr("Игрок")
         font.pointSize: 20
         horizontalAlignment: Text.AlignHCenter
     }

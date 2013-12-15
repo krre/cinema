@@ -26,25 +26,34 @@ function init() {
             version: 1
         },
         const: {
-            opponents: [
-                qsTr("Трус"),
-                qsTr("Балбес"),
-                qsTr("Бывалый")
-            ],
-            genres: [
-                qsTr("Фантастика"),
-                qsTr("Ужасы"),
-                qsTr("Драма"),
-                qsTr("Боевик"),
-                qsTr("Приключения"),
-                qsTr("Комедия"),
-                qsTr("Мюзикл")
-            ],
-            directors: directors,
-            actors: actors,
-            eposodes: episopes,
-            equipments: equipments
-
+            genres: {
+                name: qsTr("ЖАНР"),
+                list: [
+                    qsTr("Фантастика"),
+                    qsTr("Ужасы"),
+                    qsTr("Драма"),
+                    qsTr("Боевик"),
+                    qsTr("Приключения"),
+                    qsTr("Комедия"),
+                    qsTr("Мюзикл")
+                ]
+            },
+            directors: {
+                name: qsTr("РЕЖИССЁР"),
+                list: directors
+            },
+            actors: {
+                name: qsTr("АКТЁР"),
+                list: actors
+            },
+            episodes: {
+                name: qsTr("ЭПИЗОД"),
+                list: episopes
+            },
+            equipments: {
+                name: qsTr("ОБОРУДОВАНИЕ"),
+                list: equipments
+            }
         },
         text: {
             phases: {
@@ -55,11 +64,25 @@ function init() {
                     qsTr("Передайте ход")
                 ]
                 ,
-                second: []
+                director: []
             }
         },
         variable: {
-
+            phase: 0,
+            gamers: {
+                count: 4,
+                list: [
+                    { name: qsTr("Я горячо любимый")},
+                    { name: qsTr("Трус") },
+                    { name: qsTr("Балбес") },
+                    { name: qsTr("Бывалый") }
+                ]
+            },
+            genreDeck: [],
+            directorDeck: [],
+            actorDeck: [],
+            episodeDeck: [],
+            equipmentDeck: [],
         }
     }
 }

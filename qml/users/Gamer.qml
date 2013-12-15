@@ -24,7 +24,6 @@ Rectangle {
         anchors.left: avatar.left
         horizontalAlignment: Qt.AlignHCenter
         verticalAlignment: Qt.AlignVCenter
-        text: qsTr("Я горячо любимый")
         font.pointSize: 20
         wrapMode: Text.WordWrap
     }
