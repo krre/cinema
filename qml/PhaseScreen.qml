@@ -7,7 +7,6 @@ import "../js/utils.js" as Utils
 Rectangle {
     id: root
     property int rndDice: 0
-//    property var genres: Phase.emptyGenreList()
     property var genres: new Phase.Deck()
     property int zStack: 100
     property int genreIndex: -1
@@ -53,6 +52,23 @@ Rectangle {
     Grid {
         x: 233
         y: 270
+        columns: 3
+        columnSpacing: 15
+        rowSpacing: 10
+
+        Repeater {
+            model: 6
+
+            Slot {
+                width: 93
+                height: 158
+            }
+        }
+    }
+
+    Grid {
+        x: 233
+        y: 270
         z: 100
         columns: 3
         columnSpacing: 15
@@ -67,6 +83,7 @@ Rectangle {
                 visible: text != ""
                 onPressed: z = ++zStack
                 keys: "card"
+                dragEnable: root.state != "04-ejection-cards"
                 onFallToSlot: if (root.state == "02-select-genre") {
                                   genreIndex = Phase.genreIndexByName(text)
                                   genres.remove(modelData)
@@ -116,7 +133,6 @@ Rectangle {
             MouseArea {
                 id: diceMouseArea
                 anchors.fill: parent
-                visible: root.state == "01-dice"
                 onClicked:  {
                     rndDice = Utils.rndInt(1, 6)
                     genres = new Phase.Deck(globalData.const.genres, rndDice)
@@ -260,6 +276,7 @@ Rectangle {
         State {
             name: "01-dice"
             PropertyChanges { target: root; stateNumber: 0 }
+            PropertyChanges {target: diceMouseArea; visible: true }
         },
 
         State {
@@ -267,6 +284,7 @@ Rectangle {
             PropertyChanges { target: root; stateNumber: 1 }
             PropertyChanges { target: dropHandTarget; keys: "card" }
             PropertyChanges { target: dropRecycleTarget; keys: "noCard" }
+            PropertyChanges {target: diceMouseArea; visible: false }
         },
 
         State {
@@ -274,18 +292,18 @@ Rectangle {
             PropertyChanges { target: root; stateNumber: 2 }
             PropertyChanges { target: dropHandTarget; keys: "noCard" }
             PropertyChanges { target: dropRecycleTarget; keys: "card" }
+            PropertyChanges {target: diceMouseArea; visible: true }
         },
 
         State {
             name: "04-ejection-cards"
             PropertyChanges { target: root; stateNumber: 3 }
-            PropertyChanges { }
+            PropertyChanges {target: diceMouseArea; visible: true }
         },
 
         State {
-            name: "04-next-move"
+            name: "05-next-move"
         }
-
     ]
 
     state: "01-dice"

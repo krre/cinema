@@ -5,6 +5,7 @@ Item {
     property alias text: label.text
     property alias tile: tile
     property string keys
+    property bool dragEnable
 
     signal pressed
     signal fallToSlot()
@@ -32,7 +33,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             color: "#c3beff"
             border.color: "black"
-            border.width: 3
+            border.width: 2
 
             Drag.active: mouseArea.drag.active
             Drag.keys: keys
@@ -47,7 +48,7 @@ Item {
             }
 
             states: State {
-                when: mouseArea.drag.active
+                when: mouseArea.drag.active && dragEnable
                 ParentChange { target: tile; parent: root }
                 AnchorChanges { target: tile; anchors.verticalCenter: undefined; anchors.horizontalCenter: undefined }
             }

@@ -5,4 +5,5 @@ Rectangle {
     height: 200
     color: "#c3beff"
     border.color: "#52506b"
+    border.width: 2
 }
