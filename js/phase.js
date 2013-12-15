@@ -13,10 +13,11 @@ function Deck(source, cut) {
     }
     this.remove = function(pos) {
        workList.splice(pos, 1)
-        console.log(sourceList)
     }
 
-    this.count = workList.length
+    this.count = function() {
+        return workList.length
+    }
     this.list = workList
 }
 

@@ -70,13 +70,15 @@ Rectangle {
                 onFallToSlot: if (root.state == "02-select-genre") {
                                   genreIndex = Phase.genreIndexByName(text)
                                   genres.remove(modelData)
-                                  console.log(genres.count)
-                                  if (genres.count >= 1) {
+                                  if (genres.count() >= 1) {
                                     root.state = "03-garbage"
                                   }
                                   else {
                                       root.state = "04-ejection-cards"
                                   }
+                              }
+                              else if (root.state = "03-garbage") {
+                                  root.state = "04-ejection-cards"
                               }
             }
         }
@@ -116,7 +118,7 @@ Rectangle {
                 anchors.fill: parent
                 visible: root.state == "01-dice"
                 onClicked:  {
-                    rndDice = Utils.rndInt(1, 2)
+                    rndDice = Utils.rndInt(1, 6)
                     genres = new Phase.Deck(globalData.const.genres, rndDice)
                     // отображение карточек, скрытых в прошлую игру
                     for (var i = 0; i < cards.count; i++) {
