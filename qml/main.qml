@@ -9,7 +9,7 @@ Rectangle {
     property int virtualWidth: 720
     property int virtualHeight: 1280
     property real currentScale: 1
-    property var globalData: Data.init()
+    property var gameData: Data.init()
 
     Component.onCompleted: {
         calculateSize()

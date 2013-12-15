@@ -13,7 +13,7 @@ Rectangle {
     property int stateNumber: 0
 
     Component.onCompleted: {
-//        var x = new Phase.Deck(globalData.const.genres, 4)
+//        var x = new Phase.Deck(gameData.const.genres, 4)
 //        var x = new Phase.Deck()
 //        Utils.msgbox(x.list)
     }
@@ -24,17 +24,17 @@ Rectangle {
         spacing: 17
         Opponent {
             color: "#e3e3e3"
-            name: qsTr("Игрок 1")
+            name: gameData.const.opponents[0]
         }
 
         Opponent {
             color: "#f2ffbd"
-            name: qsTr("Игрок 2")
+            name: gameData.const.opponents[1]
         }
 
         Opponent {
             color: "#ffcaeb"
-            name: qsTr("Игрок 3")
+            name: gameData.const.opponents[2]
         }
     }
 
@@ -112,7 +112,7 @@ Rectangle {
         Text {
             width: parent.width - 30
             anchors.centerIn: parent
-            text: globalData.text.phases.first[stateNumber]
+            text: gameData.text.phases.first[stateNumber]
             font.pointSize: 18
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
@@ -135,7 +135,7 @@ Rectangle {
                 anchors.fill: parent
                 onClicked:  {
                     rndDice = Utils.rndInt(1, 6)
-                    genres = new Phase.Deck(globalData.const.genres, rndDice)
+                    genres = new Phase.Deck(gameData.const.genres, rndDice)
                     // отображение карточек, скрытых в прошлую игру
                     for (var i = 0; i < cards.count; i++) {
                         cards.itemAt(i).tile.opacity = 1

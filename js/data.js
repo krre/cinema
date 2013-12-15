@@ -12,6 +12,11 @@ function init() {
                 qsTr("Приключения"),
                 qsTr("Комедия"),
                 qsTr("Мюзикл")
+            ],
+            opponents: [
+                qsTr("Трус"),
+                qsTr("Балбес"),
+                qsTr("Бывалый")
             ]
         },
         text: {
