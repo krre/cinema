@@ -168,8 +168,9 @@ Rectangle {
             MouseArea {
                 id: nextMouseArea
                 anchors.fill: parent
+                visible: root.state == "04-ejection-cards"
                 onClicked:  {
-                    console.log("next")
+                    root.state = "01-dice"
                 }
             }
         }
@@ -292,13 +293,13 @@ Rectangle {
             PropertyChanges { target: root; stateNumber: 2 }
             PropertyChanges { target: dropHandTarget; keys: "noCard" }
             PropertyChanges { target: dropRecycleTarget; keys: "card" }
-            PropertyChanges {target: diceMouseArea; visible: true }
+            PropertyChanges {target: diceMouseArea; visible: false }
         },
 
         State {
             name: "04-ejection-cards"
             PropertyChanges { target: root; stateNumber: 3 }
-            PropertyChanges {target: diceMouseArea; visible: true }
+            PropertyChanges {target: diceMouseArea; visible: false }
         },
 
         State {
