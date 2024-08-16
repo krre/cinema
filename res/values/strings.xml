@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">The Game</string>
+    <string name="game_button">ИГРА</string>
+    <string name="producer_button">ПРОДЮСЕР</string>
+    <string name="archive_button">АРХИВ</string>
+    <string name="name_button">Введите ваше имя</string>
+    <string name="motto_button">Введите ваш девиз</string>
+    <string name="genre_button">Введите жанр кино</string>
+    <string name="avatar_button">Аватар</string>
+    <string name="next_button">Далее</string>
+    <string name="statistics_textView">СТАТИСТИКА</string>
+    <string name="back_button">Вернуться в начало</string>
+
+</resources>
