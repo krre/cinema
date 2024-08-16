@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/PhaseScreen.qml</file>
+        <file>qml/users/Gamer.qml</file>
+        <file>qml/users/Opponent.qml</file>
+        <file>qml/cards/Card.qml</file>
+        <file>qml/cards/Deck.qml</file>
+        <file>qml/cards/Slot.qml</file>
+        <file>js/phase.js</file>
+        <file>js/utils.js</file>
+        <file>js/data.js</file>
+        <file>qml/images/dice_action.png</file>
+        <file>qml/images/fortune_action.png</file>
+        <file>qml/images/next_action.png</file>
+        <file>qml/images/fortune-area.png</file>
+        <file>qml/images/recycle-area.png</file>
+        <file>qml/images/eye.png</file>
+        <file>qml/images/star.png</file>
+        <file>qml/images/no_avatar.png</file>
+        <file>qml/images/market-area.png</file>
+        <file>js/gamer.js</file>
+    </qresource>
+</RCC>
